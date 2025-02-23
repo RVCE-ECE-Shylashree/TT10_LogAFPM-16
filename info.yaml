@@ -3,7 +3,7 @@ project:
   title:        "16-bit Logarithmic Approximate Floating Point Multiplier"      # Project title
   author:       "Anwesh Rao, B S Gurucharan, Shreyas M Iliger, Tushar M, Dr. Shylashree N, R.V. College of Engineering"      # Your name
   discord:      "lightningbolt0827"      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
-  description:  "fp_16_MULTIPLY"      # One line description of what your project does
+  description:  "A hardware-efficient 16-bit floating-point multiplier utilizing logarithmic approximation to achieve fast and power-efficient floating-point multiplication with reduced computational complexity."      # One line description of what your project does
   language:     "Verilog" # other examples include SystemVerilog, Amaranth, VHDL, etc
   clock_hz:     50000000       # Clock frequency in Hz (or 0 if not applicable)
 
