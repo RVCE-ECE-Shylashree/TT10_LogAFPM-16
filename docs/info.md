@@ -40,7 +40,7 @@ The multiplier operates using a finite state machine (FSM) that progresses throu
 
 **clk** operates at a 50 MHz frequency.
 
-Table: State Transition for FP-16 Multiplication of 0x43BC*0x4190
+Table: State Transition for FP-16 Multiplication of (0x43BC)*(0x4190)
 | **Time (ns)** | **ui_in (Input A)** | **uio_in (Input B)**      | **Reset** | **State**            | **uo_out (Output)** | **Clock** |
 |---------------|---------------------|---------------------------|-----------|----------------------|---------------------|-----------|
 | 0             | `00000000`          | `00000000`                |  0        | Reset                | `xxxxxxxx`          |0          |
