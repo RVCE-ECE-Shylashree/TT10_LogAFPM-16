@@ -1,11 +1,14 @@
-> ## 📌 Credits  
->  
-  We sincerely acknowledge the **Center of Excellence in Integrated Circuits and Systems (ICAS)** and the **Department of Electronics and Communication Engineering, R.V. College of Engineering, Bengaluru**, for their invaluable support in providing us with the necessary knowledge and training.  
->  
-> We extend our special gratitude to **Dr. K S Geetha (Vice Principal)** and **Dr. K N Subramanya (Principal)** for their continuous encouragement and support, enabling us to achieve **TAPEOUT in Tiny Tapeout 10**.  
->  
-> We are also deeply grateful to **Mahaa Santeep G (RVCE Alumni)** for his mentorship and invaluable guidance throughout the completion of this project.  
+```
+## 📌 Credits  
 
+```
+We sincerely acknowledge the Center of Excellence in Integrated Circuits and Systems (ICAS) and the Department of Electronics and Communication Engineering, R.V. College of Engineering, Bengaluru, for their invaluable support in providing us with the necessary knowledge and training.  
+
+We extend our special gratitude to Dr. K S Geetha (Vice Principal) and Dr. K N Subramanya (Principal) for their continuous encouragement and support, enabling us to achieve TAPEOUT in Tiny Tapeout 10.  
+
+We are also deeply grateful to Mahaa Santeep G (RVCE Alumni) for his mentorship and invaluable guidance throughout the completion of this project.  
+```
+```
 The code provided is a Verilog module that implements a 16-bit logarithmic approximate floating-point multiplier. This module utilizes logarithmic approximation techniques to perform floating-point multiplication efficiently, reducing computational complexity while maintaining accuracy. It incorporates a state machine that processes the LSB(lower 8 bits) of the inputs in the first cycle and the MSB(upper 8 bits) in the next cycle, subsequently producing the LSB(lower 8 bits) of the output first, followed by the MSB(upper 8 bits) in the next cycle.
 
 Key Components
