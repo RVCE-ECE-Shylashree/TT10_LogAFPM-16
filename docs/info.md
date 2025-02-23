@@ -1,8 +1,17 @@
-Credits : We gratefully acknowledge the COE in Integrated Circuits and Systems (ICAS) and Department of Electronics and Communications Engineering, R. V. College of Engineering, Bengaluru. Our special thanks to Dr K S Geetha (Vice Principal) and, Dr. K N Subramanya (Principal) for their constant support and encouragement to do TAPEOUT in Tiny Tapeout 8 .
+Credits : We gratefully acknowledge the COE in Integrated Circuits and Systems (ICAS) and Department of Electronics and Communications Engineering, R. V. College of Engineering, Bengaluru. Our special thanks to Dr K S Geetha (Vice Principal) and, Dr. K N Subramanya (Principal) for their constant support and encouragement to do TAPEOUT in Tiny Tapeout 10.
 
 We are also grateful to Mahaa Santeep G(RVCE Alumni) for his guidance and mentorship in completing this project.
 
-The code provided is a SystemVerilog module that implements a Dynamic Power Management Unit (DPMU) for an SoC (System on Chip). The DPMU dynamically adjusts voltage and frequency levels based on inputs such as performance requirements, temperature, battery level, and workload. The module uses a finite state machine (FSM) to manage transitions between different power states.
+## 📌 Credits  
+
+We gratefully acknowledge the **COE in Integrated Circuits and Systems (ICAS)** and the **Department of Electronics and Communications Engineering, R. V. College of Engineering, Bengaluru**.  
+
+Our special thanks to **Dr. K S Geetha (Vice Principal)** and **Dr. K N Subramanya (Principal)** for their constant support and encouragement to do **TAPEOUT in Tiny Tapeout 10**.  
+
+We are also grateful to **Mahaa Santeep G (RVCE Alumni)** for his guidance and mentorship in completing this project.  
+
+
+The code provided is a Verilog module that implements a 16-bit logarithmic approximate floating-point multiplier. This module utilizes logarithmic approximation techniques to perform floating-point multiplication efficiently, reducing computational complexity while maintaining accuracy. It incorporates a state machine that processes the LSB(lower 8 bits) of the inputs in the first cycle and the MSB(upper 8 bits) in the next cycle, subsequently producing the LSB(lower 8 bits) of the output first, followed by the MSB(upper 8 bits) in the next cycle.
 
 Key Components
 
