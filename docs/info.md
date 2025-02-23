@@ -11,23 +11,34 @@ The code provided is a Verilog module that implements a 16-bit logarithmic appro
 
 Key Components
 
-Inputs and Outputs: Inputs (ui_in): The primary input signals include performance requirements, temperature sensor data, battery level, and workload. Outputs (uo_out, uio_out): These include the power-saving indicator, voltage levels, and frequency levels for different cores and memory. I/O (uio_in, uio_out, uio_oe): Handles bidirectional signals; however, in this design, uio_in is not used, and uio_out is used for output. Internal Signals:
+The Logarithmic Approximate Floating-Point Multiplier (LAFPM) is a hardware-efficient multiplier that processes two 16-bit floating-point numbers using logarithmic approximation techniques. Instead of traditional multiplication, this design reduces complexity by leveraging logarithmic transformations, shifts, and additions. This approach significantly lowers power consumption and area, making it ideal for resource-constrained applications such as machine learning accelerators and embedded systems.
+The multiplier operates using a finite state machine (FSM) that progresses through several key states:
 
-State Variables: state and next_state manage the FSM that controls the DPMU's behavior. Power and Frequency Controls: Registers like vcore1, vcore2, vmem, fcore1, fcore2, and fmem store the voltage and frequency settings. Finite State Machine (FSM):
+**IDLE** – The system remains in this state until a non-zero input is detected. Once an input is received, it transitions to the next stage.
 
-States: NORMAL: Default operating mode with standard voltage and frequency levels. PERFORMANCE: High-performance mode with maximum voltage and frequency levels. POWERSAVE: Low-power mode with reduced voltage and frequency levels. THERMAL_MANAGEMENT: Mode to handle high temperature by adjusting power levels moderately. BATTERY_SAVING: Mode to conserve battery by minimizing voltage and frequency levels.
+**COLLECT** – The multiplier collects the two 8-bit portions of each operand over multiple cycles to reconstruct the 16-bit floating-point numbers. After both parts are received, it moves to processing.
 
-State Transitions: Transitions between states occur based on the input conditions, such as high performance request, low battery level, high temperature, or low workload. Detailed Walkthrough Input and Output Mapping:
+**PROCESS_1** – The floating-point components, including the sign, exponent, and mantissa, are extracted for further computation.
 
-perf_req: Mapped to the least significant bit (LSB) of ui_in, indicating whether high performance is needed. temp_sensor: 2-bit signal derived from ui_in[3:2], providing temperature data. battery_level: 2-bit signal derived from ui_in[5:4], indicating the battery's charge status. workload_core: 3-bit signal derived from ui_in[7:6], representing the workload of a core. State Logic:
+**PROCESS_2** – The mantissas undergo logarithmic approximation through bit-shifting techniques, reducing the complexity of multiplication.
 
-On each clock cycle (clk), the FSM checks the state and evaluates transitions based on inputs. In NORMAL state, if perf_req is high, the system transitions to PERFORMANCE state. If the battery level is low, it transitions to BATTERY_SAVING state. If the temperature is high, it transitions to THERMAL_MANAGEMENT state. If the workload is low, it transitions to POWERSAVE state. PERFORMANCE state sets all voltages and frequencies to maximum. If perf_req drops, it returns to NORMAL. POWERSAVE state reduces voltages and frequencies to conserve power. If the workload increases, it returns to NORMAL. THERMAL_MANAGEMENT state adjusts power levels to moderate values to manage high temperatures. If the temperature normalizes, it returns to NORMAL. BATTERY_SAVING state minimizes voltages and frequencies to conserve battery. If the battery level increases, it returns to NORMAL.
+**PROCESS_3** – The approximated mantissas are added together using a logarithmic-based summation.
 
-Output Assignment: The combined voltage (vcore1, vcore2, vmem) and frequency (fcore1, fcore2, fmem) values are assigned to the uio_out and uo_out outputs. The power_save signal is also part of the output, indicating whether the system is in power-saving mode. Behavior under Reset:
+**PROCESS_4** – A carry-out bit is determined, which helps adjust the exponent in the next stage.
 
-When the reset (rst_n) is low (active), the system resets to the NORMAL state.
+**PROCESS_5** – The new exponent is computed, and an additional approximation step refines the mantissa for better accuracy.
 
-Here’s a table summarizing the expected output (uio_out, uo_out) based on the input (ui_in) and time using the provided testbench for the tt_um_dpmu module. The table provides the values for different states as the ui_in input changes over time.
+**PROCESS_6** – The final floating-point result is assembled, combining the computed sign, exponent, and mantissa.
+
+**OUTPUT** – The computed result is transmitted over multiple cycles. Once completed, the system returns to the IDLE state, ready for the next operation.
+
+**Inputs and Clock Frequency**
+
+**u_in and uio_in** are used to receive operands A and B through multiple cycles.
+
+**rst_n** is the active-low reset signal.
+
+**clk** operates at a 50 MHz frequency.
 
 Table: Testbench Expected Output
 
