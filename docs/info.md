@@ -40,25 +40,24 @@ The multiplier operates using a finite state machine (FSM) that progresses throu
 
 **clk** operates at a 50 MHz frequency.
 
-Table: State Transi for FP-16 Multiplication 0x
+Table: State Transition for FP-16 Multiplication of 0x43BC*0x4190
+| **Time (ns)** | **ui_in (Input A)** | **uio_in (Input B)**      | **Rest** | **State**            | **uo_out (Output)** |
+|---------------|------------------|------------------------------|----------|----------------------|--------------------------------|
+| 0             | `00000000`       | `00000000`                |  `0`      | Reset               | `00000000`                     |
+| 20            |                   | 11111111                     |          | PERFORMANCE          | 111_111111                     |
+| 40            | 11110010          | 01010110                     |          | NORMAL               | 010_010010                     |
+| 60            | 11110011          | 10101011                     |          | THERMAL_MANAGEMENT    | 011_011011                     |
+| 80            | 11110010          | 01010110                     |          | NORMAL               | 010_010010                     |
+| 100           | 11101010          | 10101011                     |          | THERMAL_MANAGEMENT    | 011_011011                     |
+| 120           | 11111010          | 00000000                     |          | BATTERY_SAVING        | 000_000000                     |
+| 140           | 11111110          | 00000000                     |          | BATTERY_SAVING        | 000_000000                     |
+| 160           | 11111010          | 00000000                     |          | BATTERY_SAVING        | 000_000000                     |
 
-| **Time (ns)** | **`ui_in` (Input)** | **State**            | **`uio_out` (Expected Output)** | **`uo_out` (Expected Output)** |
-|---------------|---------------------|----------------------|---------------------------------|--------------------------------|
-| 0             | `11110010`           | NORMAL               | `01010110`                      | `010_010010`                   |
-| 10            | `00010010`           | PERFORMANCE          | `11111111`                      | `111_111111`                   |
-| 30            | `11110010`           | NORMAL               | `01010110`                      | `010_010010`                   |
-| 50            | `11110011`           | THERMAL_MANAGEMENT    | `10101011`                      | `011_011011`                   |
-| 70            | `11110010`           | NORMAL               | `01010110`                      | `010_010010`                   |
-| 90            | `11101010`           | THERMAL_MANAGEMENT    | `10101011`                      | `011_011011`                   |
-| 110           | `11111010`           | BATTERY_SAVING        | `00000000`                      | `000_000000`                   |
-| 130           | `11111110`           | BATTERY_SAVING        | `00000000`                      | `000_000000`                   |
-| 150           | `11111010`           | BATTERY_SAVING        | `00000000`                      | `000_000000`                   |
-
-
-Explanation of Table Columns:
-
-Time (ns): The simulation time when the ui_in input is applied. ui_in (Input): The 8-bit input value applied to the design. State: The state of the FSM based on the ui_in input. The states are NORMAL, PERFORMANCE, THERMAL_MANAGEMENT, and BATTERY_SAVING. uio_out (Expected Output): The expected 8-bit output values for the uio_out signals. uio_out[0]: Power save mode indicator. uio_out[2:1], uio_out[4:3], uio_out[6:5]: Voltage controls. uio_out[7]: Part of fcore1[0]. uo_out (Expected Output): The expected 8-bit output values for the uo_out signals. uo_out[0:1]: Part of fcore1[2:1]. uo_out[4:2]: fcore2[2:0]. uo_out[7:5]: fmem[2:0].
-
-Explanation of Key Points: NORMAL State: When the inputs suggest a typical operating environment (e.g., ui_in = 11110010), the design operates with default voltage and frequency levels. PERFORMANCE State: Triggered by a performance request (perf_req = 1), leading to maximum voltage and frequency levels. THERMAL_MANAGEMENT State: Triggered by high temperature (temp_sensor = 10 or 11), moderates the voltage and frequency to prevent overheating. BATTERY_SAVING State: Triggered by low battery level (battery_level = 00 or 01), minimizing power consumption by reducing voltage and frequency to the lowest levels.
-
-Testbench Operation: The testbench applies different ui_in values at specific simulation times. At each time step, it captures the output values (uio_out and uo_out) and compares them with the expected values as per the design's FSM logic. The $monitor statement continuously logs the input and output values, helping to verify the design's behavior at each time point.
+Other Operands can also given as follows:
+Table: Multiple Operands with Expected output
+| **Input A** | **Input B** | **Output**  |
+|--------------|--------------|------------|
+| 00001101     | 00000011     | 00000111   |
+| 10101010     | 01010101     | 11111111   |
+| 11110000     | 00001111     | 11111111   |
+| 11001100     | 00110011     | 11111111   |
