@@ -35,8 +35,8 @@ module tt_um_logarithmic_afpm (
 	reg [7:0] out_reg;
 	
 	reg [3:0] state;                // FSM state register
-	reg [15:0] A, B;                // 32-bit registers for operands
-	reg [15:0] result;              // 32-bit result register
+	reg [15:0] A, B;                // 16-bit registers for operands
+	reg [15:0] result;              // 16-bit result register
 	reg [1:0] byte_count;           // Counter to track byte collection
 	
 	reg [10:0] M1aout, M1bout, M1addout;
