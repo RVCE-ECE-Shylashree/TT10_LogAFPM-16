@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2025 STAG_ECE-RVCE
+ * SPDX-License-Identifier: Apache-2.0
+*/
+
 `default_nettype none
 
 module tt_um_logarithmic_afpm (
