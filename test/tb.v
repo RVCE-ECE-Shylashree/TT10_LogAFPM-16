@@ -66,32 +66,16 @@ module tb ();
     rst_n = 0;  
     ui_in_reg = 8'b00000000;
     uio_in_reg = 8'b00000000;
-     #20 rst_n = 1; // Release reset after some time
-     
-        /**************** TEST CASE 1 ****************  
-        // Example Inputs (Floating-Point)
-        A = 16'h0101; //
-        B = 16'h0101; //
-
-        // Apply Inputs
-        for (i = 0; i < 2; i = i + 1) begin
-            ui_in_reg  = A[i*8 +: 8]; 
-            uio_in_reg = B[i*8 +: 8]; 
-           #(20);
-        end
-
-     #70*/
-     
-        // **************** TEST CASE 2 ****************  
+    #20 rst_n = 1; // Release reset after some time
+ 
         // Example Inputs (Floating-Point)
         A = 16'h43BC; //
         B = 16'h4190; //
-
         // Apply Inputs
         for (i = 0; i < 2; i = i + 1) begin
             ui_in_reg  = A[i*8 +: 8]; 
             uio_in_reg = B[i*8 +: 8]; 
-           #(20);
+           #(40);
         end
 
         // Wait for processing
@@ -101,37 +85,6 @@ module tb ();
   // Monitor the signals during simulation
 initial begin
    $monitor("Time=%0d | ui_in=%b, uio_in=%b | uo_out=%b | reset=%b | clk=%b", $time, ui_in, uio_in, uo_out, rst_n, clk);
-   /*#10 $display("Time=%0d | ui_in=%b, uio_in=%b | uo_out=%b | rest=%b", $time, ui_in, uio_in, uo_out, rst_n);
-    #10 $display("Time=%0d | ui_in=%b, uio_in=%b | uo_out=%b | rest=%b", $time, ui_in, uio_in, uo_out, rst_n);
-    #10 $display("Time=%0d | ui_in=%b, uio_in=%b | uo_out=%b | rest=%b", $time, ui_in, uio_in, uo_out, rst_n);
-    #10 $display("Time=%0d | ui_in=%b, uio_in=%b | uo_out=%b | rest=%b", $time, ui_in, uio_in, uo_out, rst_n);
-    #10 $display("Time=%0d | ui_in=%b, uio_in=%b | uo_out=%b | rest=%b", $time, ui_in, uio_in, uo_out, rst_n);
-    #10 $display("Time=%0d | ui_in=%b, uio_in=%b | uo_out=%b | rest=%b", $time, ui_in, uio_in, uo_out, rst_n);
-    #10 $display("Time=%0d | ui_in=%b, uio_in=%b | uo_out=%b | rest=%b", $time, ui_in, uio_in, uo_out, rst_n);
-    #10 $display("Time=%0d | ui_in=%b, uio_in=%b | uo_out=%b | rest=%b", $time, ui_in, uio_in, uo_out, rst_n);
-    #10 $display("Time=%0d | ui_in=%b, uio_in=%b | uo_out=%b | rest=%b", $time, ui_in, uio_in, uo_out, rst_n);
-    #10 $display("Time=%0d | ui_in=%b, uio_in=%b | uo_out=%b | rest=%b", $time, ui_in, uio_in, uo_out, rst_n);
-    #10 $display("Time=%0d | ui_in=%b, uio_in=%b | uo_out=%b | rest=%b", $time, ui_in, uio_in, uo_out, rst_n);
-    #10 $display("Time=%0d | ui_in=%b, uio_in=%b | uo_out=%b | rest=%b", $time, ui_in, uio_in, uo_out, rst_n);
-    #10 $display("Time=%0d | ui_in=%b, uio_in=%b | uo_out=%b | rest=%b", $time, ui_in, uio_in, uo_out, rst_n);
-    #10 $display("Time=%0d | ui_in=%b, uio_in=%b | uo_out=%b | rest=%b", $time, ui_in, uio_in, uo_out, rst_n);
-    #10 $display("Time=%0d | ui_in=%b, uio_in=%b | uo_out=%b | rest=%b", $time, ui_in, uio_in, uo_out, rst_n);
-    #10 $display("Time=%0d | ui_in=%b, uio_in=%b | uo_out=%b | rest=%b", $time, ui_in, uio_in, uo_out, rst_n);
-    #10 $display("Time=%0d | ui_in=%b, uio_in=%b | uo_out=%b | rest=%b", $time, ui_in, uio_in, uo_out, rst_n);
-    #10 $display("Time=%0d | ui_in=%b, uio_in=%b | uo_out=%b | rest=%b", $time, ui_in, uio_in, uo_out, rst_n);
-    #10 $display("Time=%0d | ui_in=%b, uio_in=%b | uo_out=%b | rest=%b", $time, ui_in, uio_in, uo_out, rst_n);
-    #10 $display("Time=%0d | ui_in=%b, uio_in=%b | uo_out=%b | rest=%b", $time, ui_in, uio_in, uo_out, rst_n);
-    #10 $display("Time=%0d | ui_in=%b, uio_in=%b | uo_out=%b | rest=%b", $time, ui_in, uio_in, uo_out, rst_n);
-    #10 $display("Time=%0d | ui_in=%b, uio_in=%b | uo_out=%b | rest=%b", $time, ui_in, uio_in, uo_out, rst_n);
-    #10 $display("Time=%0d | ui_in=%b, uio_in=%b | uo_out=%b | rest=%b", $time, ui_in, uio_in, uo_out, rst_n);
-    #10 $display("Time=%0d | ui_in=%b, uio_in=%b | uo_out=%b | rest=%b", $time, ui_in, uio_in, uo_out, rst_n);
-   #10 $display("Time=%0d | ui_in=%b, uio_in=%b | uo_out=%b | rest=%b", $time, ui_in, uio_in, uo_out, rst_n);
-   #10 $display("Time=%0d | ui_in=%b, uio_in=%b | uo_out=%b | rest=%b", $time, ui_in, uio_in, uo_out, rst_n);
-   #10 $display("Time=%0d | ui_in=%b, uio_in=%b | uo_out=%b | rest=%b", $time, ui_in, uio_in, uo_out, rst_n);
-   #10 $display("Time=%0d | ui_in=%b, uio_in=%b | uo_out=%b | rest=%b", $time, ui_in, uio_in, uo_out, rst_n);
-   #10 $display("Time=%0d | ui_in=%b, uio_in=%b | uo_out=%b | rest=%b", $time, ui_in, uio_in, uo_out, rst_n);
-   #10 $display("Time=%0d | ui_in=%b, uio_in=%b | uo_out=%b | rest=%b", $time, ui_in, uio_in, uo_out, rst_n);
-   #10 $display("Time=%0d | ui_in=%b, uio_in=%b | uo_out=%b | rest=%b", $time, ui_in, uio_in, uo_out, rst_n);*/
 end
 
 
