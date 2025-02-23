@@ -40,7 +40,7 @@ The multiplier operates using a finite state machine (FSM) that progresses throu
 
 **clk** operates at a 50 MHz frequency.
 
-Table: Testbench Expected Output
+Table: State Transi for FP-16 Multiplication 0x
 
 | **Time (ns)** | **`ui_in` (Input)** | **State**            | **`uio_out` (Expected Output)** | **`uo_out` (Expected Output)** |
 |---------------|---------------------|----------------------|---------------------------------|--------------------------------|
