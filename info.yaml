@@ -1,7 +1,7 @@
 # Tiny Tapeout project information
 project:
   title:        "16-bit Logarithmic Approximate Floating Point Multiplier"      # Project title
-  author:       "Anwesh Rao, B S Gurucharan, Shreyas M Iliger, Tushar M, Dr. Shylashree N, R.V. College of Engineering"      # Your name
+  author:       "Anwesh Rao, B S Gurucharan, Shreyas M Iliger, Tushar M, Shylashree N, RV College of Engineering"      # Your name
   discord:      "lightningbolt0827"      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
   description:  "A 16-bit floating-point multiplier utilizing logarithmic approximation to achieve fast and power-efficient floating-point multiplication with reduced hardware."      # One line description of what your project does
   language:     "Verilog" # other examples include SystemVerilog, Amaranth, VHDL, etc
