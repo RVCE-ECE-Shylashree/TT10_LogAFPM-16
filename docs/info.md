@@ -2,7 +2,7 @@
 >  
 > We sincerely acknowledge the **Center of Excellence in Integrated Circuits and Systems (CoE-ICAS)** and the **Department of Electronics and Communication Engineering, R.V. College of Engineering, Bengaluru**, for their invaluable support in providing us with the necessary knowledge and training.  
 > 
-> We extend our special gratitude to **Dr. H V Ravish Aradhya(HoD, ECE)**, **Dr. K S Geetha (Vice Principal)** and **Dr. K N Subramanya (Principal)** for their continuous encouragement and support, enabling us to achieve **TAPEOUT** in **Tiny Tapeout 10**.  
+> We extend our special gratitude to **Dr. H V Ravish Aradhya (HoD, ECE)**, **Dr. K S Geetha (Vice Principal)** and **Dr. K N Subramanya (Principal)** for their continuous encouragement and support, enabling us to achieve **TAPEOUT** in **Tiny Tapeout 10**.  
 >  
 > We are also deeply grateful to **Mahaa Santeep G (RVCE Alumni)** for his mentorship and invaluable guidance throughout the completion of this project.  
   
