@@ -5,7 +5,7 @@
 
 `default_nettype none
 
-module tt_um_logarithmic_afpm (
+module tt_um_log_afpm (
 	input  wire [7:0] ui_in,    // 8-bit Input
 	input  wire [7:0] uio_in,   // IOs: Input path
 	output wire [7:0] uo_out,   // 8-bit Output
