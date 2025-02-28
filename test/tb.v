@@ -33,7 +33,7 @@ module tb ();
    `endif
    
    // Instantiate the module under test (Replace tt_um_lightFP8 with your module name)
-   tt_um_logarithmic_afpm user_project (
+   tt_um_log_afpm user_project (
       `ifdef GL_TEST
       .VPWR(VPWR), // Power
       .VGND(VGND), // Ground
